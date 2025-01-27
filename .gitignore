@@ -4,12 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/app/api/send/.env
-.env
-/app/api/send/.env
-
-
-
 
 
 # testing
@@ -32,7 +26,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
 
 # vercel
 .vercel
