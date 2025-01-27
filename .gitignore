@@ -8,8 +8,7 @@
 .env
 /app/api/send/.env
 
-.env
-.env*.local
+
 
 
 
