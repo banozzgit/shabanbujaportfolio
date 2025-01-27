@@ -7,25 +7,21 @@ import Link from "next/link";
 
 const HeroSection = () => {
   const handleDownloadCV = () => {
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/notify-cv-download`;
-  
-    fetch(endpoint, {
+    fetch("https://shabanbujaportfolio.onrender.com/notify-cv-download", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ message: "User downloaded CV" }),
-    })
-    .then(response => {
+    }).then(response => {
       if (response.ok) {
         console.log("Download CV notification sent successfully");
       }
-    })
-    .catch(error => {
+    }).catch(error => {
       console.error("Error sending download notification", error);
     });
   };
-  
+
 
   return (
     <section className="lg:py-16">
