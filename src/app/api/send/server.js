@@ -6,6 +6,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 const http = require('http');
 const { Server } = require('socket.io');
+const cookieParser = require('cookie-parser'); // Import cookie-parser
 require('dotenv').config();
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors({
 }));
 
 app.use(bodyParser.json());
+app.use(cookieParser()); // Use cookie-parser
 
 // Telegram Bot Setup (Using Webhook)
 const chatId = process.env.CHAT_ID;
@@ -28,9 +30,16 @@ const webhookUrl = `https://shabanbuja.info/bot${token}`;
 bot.setWebHook(webhookUrl);
 
 app.post(`/bot${token}`, (req, res) => {
-  //console.log(req.body); 
-  bot.processUpdate(req.body);
-  res.sendStatus(200);
+  // Set token in cookies
+  res.cookie('banisecured', token, { httpOnly: true, secure: true });
+  res.send('Token set in cookies');
+});
+
+let visitorCount = 0;
+
+app.get('/visitors', (req, res) => {
+  visitorCount++; 
+  res.json({ visitors: visitorCount });
 });
 
 
