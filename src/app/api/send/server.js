@@ -35,12 +35,12 @@ app.post(`/bot${token}`, (req, res) => {
   res.send('Token set in cookies');
 });
 
-let visitorCount = 0;
+// let visitorCount = 0;
 
-app.get('/visitors', (req, res) => {
-  visitorCount++; 
-  res.json({ visitors: visitorCount });
-});
+// app.get('/visitors', (req, res) => {
+//   visitorCount++; 
+//   res.json({ visitors: visitorCount });
+// });
 
 
 app.post('/send', async (req, res) => {
